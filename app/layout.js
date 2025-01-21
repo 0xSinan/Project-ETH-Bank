@@ -1,5 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import RainbowAndWagmiProvider from "@/RainbowAndWagmiProvider";
+import Layout from "./components/shared/Layout";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,10 +23,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body>
+        <RainbowAndWagmiProvider>
+          <Layout>{children}</Layout>
+        </RainbowAndWagmiProvider>
+        <Toaster />
       </body>
     </html>
   );
